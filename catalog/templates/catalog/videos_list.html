@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>CStube</h1>
+<h2>Videos</h2>
+<ul>
+  {% for video in videos_list %}
+  <li><a href="{{video.link}}" target="_blank">{{ video }} - {{ video.map_belong }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}

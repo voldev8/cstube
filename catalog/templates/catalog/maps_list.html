@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>CStube</h1>
+<h2>Maps</h2>
+<ul>
+  {% for map in maps_list %}
+  <li><a href="/catalog/map/{{map.pk}}">{{ map}} - {{ map.videos_set.all.count }}</a>  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
