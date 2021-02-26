@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
+from django.db.models import Q
 from django.views import generic
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from catalog.models import Maps, Videos
 
@@ -30,3 +32,17 @@ class VideoView(generic.ListView):
 
     def filter_map(self, map_name):
         return Videos.objects.filter(map_belong__icontains=map_name)
+
+class SearchResultsView(generic.ListView):
+    model = Videos
+    template_name = 'search_results.html'
+    def get_queryset(self): 
+        query = self.request.GET.get('q')
+        object_list = Videos.objects.filter(
+            Q(title__icontains=query) | Q(map_belong__name__icontains=query)
+        )
+        return object_list
+
+class VideoCreate(CreateView):
+    model = Videos
+    fields = ['title', 'link', 'map_belong', 'type_video', 'site']

@@ -1,10 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-<h1>CStube</h1>
-<form action="{% url 'search_results' %}" method="get">
-  <input name="q" type="text" placeholder="Search...">
-</form>
+<h1>Search Results</h1>
 <h2>Videos</h2>
 <ul>
   {% for video in videos_list %}

@@ -14,9 +14,12 @@ class Maps(models.Model):
 
 
 class Videos(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=40)
 
-    link = models.TextField(max_length=1000, help_text='Enter the link')
+    link = models.URLField(
+        max_length=100, 
+        # help_text='Enter the link'
+        )
     map_belong = models.ForeignKey('Maps', on_delete=models.SET_NULL, null=True)
     SITE = (
         ('a', 'A'),
@@ -32,14 +35,14 @@ class Videos(models.Model):
         max_length=6,
         choices=TYPE,
         blank=True,
-        help_text='Pick a type',
+        # help_text='Pick a type',
     )
     site = models.CharField(
         max_length=3,
         choices=SITE,
         blank=True,
         default='a',
-        help_text='Site availability',
+        # help_text='Site availability',
     )
 
     def __str__(self):
@@ -47,4 +50,4 @@ class Videos(models.Model):
 
     def get_absolute_url(self):
         """Returns the url to access a detail record for this video."""
-        return reverse('video-detail', args=[str(self.id)])
+        return reverse('videos')
