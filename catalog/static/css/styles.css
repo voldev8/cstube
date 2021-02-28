@@ -3,3 +3,9 @@
   padding: 0;
   list-style: none;
 }
+
+.video_add {
+  margin-top: 40px;
+  border-collapse: separate;
+  border-spacing: 0 6px;
+}
