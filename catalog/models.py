@@ -1,6 +1,7 @@
 from django.db import models
 # Used to generate URLs by reversing the URL patterns
 from django.urls import reverse
+import uuid # Required for unique book instances
 
 
 class Maps(models.Model):
@@ -15,7 +16,7 @@ class Maps(models.Model):
 
 class Videos(models.Model):
     title = models.CharField(max_length=40)
-
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='Unique ID for this particular book across whole library')
     link = models.URLField(
         max_length=100, 
         # help_text='Enter the link'
