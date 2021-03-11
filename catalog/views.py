@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.postgres.search import SearchVector
 
 from catalog.models import Maps, Videos
 
@@ -38,9 +39,11 @@ class SearchResultsView(generic.ListView):
     template_name = 'search_results.html'
     def get_queryset(self): 
         query = self.request.GET.get('q')
-        object_list = Videos.objects.filter(
-            Q(title__icontains=query) | Q(map_belong__name__icontains=query)
-        )
+        # object_list = Videos.objects.filter(
+        #     Q(title__icontains=query) | Q(map_belong__name__icontains=query)
+        # )
+        object_list = Videos.objects.annotate(search=SearchVector('title', 'map_belong__name')).filter(search=query)
+        print(query)
         return object_list
 
 class VideoCreate(CreateView):

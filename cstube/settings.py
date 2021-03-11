@@ -14,19 +14,26 @@ from pathlib import Path
 import os
 import dj_database_url
 import django_heroku
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+base = environ.Path(__file__) - 2 # two folders back (/a/b/ - 2 = /)
+env = environ.Env()
+environ.Env.read_env(env_file=base('.env')) # reading .env file  # reading .env file
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '7a&412k-nao1ysgs$nt=g7ca5^d%dbj!f0y%ak3qsw3bkfrb10')
+# SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '7a&412k-nao1ysgs$nt=g7ca5^d%dbj!f0y%ak3qsw3bkfrb10')
+SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+# DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+DEBUG = env.bool('DJANGO_DEBUG', default=False)
 
 ALLOWED_HOSTS = ['csgotube.herokuapp.com', '127.0.0.1']
 
@@ -79,9 +86,24 @@ WSGI_APPLICATION = 'cstube.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+        'default': {
+
+        'ENGINE': env("DATABASE_ENGINE"),
+
+        'NAME': env("DATABASE_NAME"),
+
+        'USER': env("DATABASE_USER"),
+
+        'PASSWORD': env("DATABASE_PASSWORD"),
+
+        'HOST': env("DATABASE_HOST"),
+
+        'PORT': env("DATABASE_PORT"),
+
     }
 }
 

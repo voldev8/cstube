@@ -16,7 +16,7 @@ class Maps(models.Model):
 class Videos(models.Model):
     title = models.CharField(max_length=40)
     link = models.URLField(
-        max_length=100, 
+        max_length=300, 
         # help_text='Enter the link'
         )
     map_belong = models.ForeignKey('Maps', on_delete=models.SET_NULL, null=True)

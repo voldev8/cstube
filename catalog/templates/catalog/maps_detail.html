@@ -4,7 +4,7 @@
   <h1>Map: {{ maps }}</h1>
   <ul>
     {% for video in maps.videos_set.all %}
-    <li><a href="{{ video.link }}" target="_blank">{{ video }}</a></li>
+    <li><a href="{{ video.link }}" target="_blank">{{ video }} / {{video.site}}</a></li>
     {% endfor %}
   </ul>
 {% endblock %}
