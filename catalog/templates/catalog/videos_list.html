@@ -1,14 +1,17 @@
 {% extends "base_generic.html" %}
 
+<!-- title -->
+{% block title %} | Videos {% endblock %}
+
 {% block content %}
-<h1>CStube</h1>
+<h1>CS:GO_tube</h1>
 <form action="{% url 'search_results' %}" method="get">
   <input name="q" type="text" placeholder="Search...">
 </form>
 <h2>Videos</h2>
 <ul>
-  {% for video in videos_list %}
-  <li><a href="{{video.link}}" target="_blank">{{ video }} - {{ video.map_belong }}</a></li>
+  {% for video in videos_list%}
+  <li><a href="/catalog/videos/{{video.pk}}" target="_blank">{{ video }} - {{ video.map_belong }}</a></li>
   {% endfor %}
 </ul>
 {% endblock %}

@@ -3,7 +3,7 @@
 {% block content %}
   <h1>Map: {{ maps }}</h1>
   <ul>
-    {% for video in maps.videos_set.all %}
+    {% for video in maps.videos_set.all|dictsort:"site" %}
     <li><a href="{{ video.link }}" target="_blank">{{ video }} / {{video.site}}</a></li>
     {% endfor %}
   </ul>

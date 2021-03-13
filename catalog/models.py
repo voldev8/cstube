@@ -11,6 +11,8 @@ class Maps(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return self.name
+    class Meta:
+        verbose_name="Map"
 
 
 class Videos(models.Model):
@@ -50,3 +52,10 @@ class Videos(models.Model):
     def get_absolute_url(self):
         """Returns the url to access a detail record for this video."""
         return reverse('videos')
+    def youtube_id(self):
+        link = self.link.split('/')[-1]
+        link_arr = link.split('?')
+        youtube_id = link_arr[0] + '?star' + link_arr[1]
+        return youtube_id
+    class Meta:
+        verbose_name = 'Video'

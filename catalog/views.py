@@ -34,6 +34,8 @@ class VideoView(generic.ListView):
     def filter_map(self, map_name):
         return Videos.objects.filter(map_belong__icontains=map_name)
 
+class VideoDetailView(generic.DetailView):
+    model = Videos
 class SearchResultsView(generic.ListView):
     model = Videos
     template_name = 'search_results.html'
