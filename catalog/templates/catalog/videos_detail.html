@@ -1,7 +1,10 @@
 {% extends "base_generic.html" %}
 
+<!-- title -->
+{% block title %} | {{ videos.title }} {% endblock %}
+
 {% block content %}
-  <h1>Video: {{ videos.youtube_id }}</h1>
+  <h1>Video: {{ videos.title }}</h1>
   <iframe 
     width="560" 
     height="315" 

@@ -9,3 +9,9 @@
   border-collapse: separate;
   border-spacing: 0 6px;
 }
+
+#twitch-embed {
+  margin-top: 40px;
+  width: 60vw;
+  height: 60vh;
+}

@@ -92,17 +92,17 @@ DATABASES = {
     # }
         'default': {
 
-        'ENGINE': env("DATABASE_ENGINE"),
+        'ENGINE': env('DATABASE_ENGINE'),
 
-        'NAME': env("DATABASE_NAME"),
+        'NAME': env('DATABASE_NAME'),
 
-        'USER': env("DATABASE_USER"),
+        'USER': env('DATABASE_USER'),
 
-        'PASSWORD': env("DATABASE_PASSWORD"),
+        'PASSWORD': env('DATABASE_PASSWORD'),
 
-        'HOST': env("DATABASE_HOST"),
+        'HOST': env('DATABASE_HOST'),
 
-        'PORT': env("DATABASE_PORT"),
+        'PORT': env('DATABASE_PORT'),
 
     }
 }
