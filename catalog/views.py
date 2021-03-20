@@ -91,7 +91,7 @@ def twitch_auth():
     env = environ.Env()
     environ.Env.read_env(env_file=base('.env')) # reading .env file  # reading .env file
     client_id = 'kg7560bqizr6ip9dk1y9lsd0xsw359'
-    client_secret = env('CLIENT_SECRET')
+    client_secret = env('TWITCH_CLIENT_SECRET')
 
     body = {
         'client_id': client_id,

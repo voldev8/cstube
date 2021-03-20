@@ -10,7 +10,7 @@
 </form>
 <h2>Videos</h2>
 <ul>
-  {% for video in videos_list%}
+  {% for video in videos_list|dictsortreversed:"id"%}
   <li>
     <a href="/catalog/videos/{{video.pk}}">
       {{ video }} - {{ video.map_belong }}

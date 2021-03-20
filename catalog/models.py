@@ -17,6 +17,7 @@ class Maps(models.Model):
 
 class Videos(models.Model):
     title = models.CharField(max_length=40)
+    created_at = models.DateTimeField(auto_now_add=True)
     link = models.URLField(
         max_length=300, 
         # help_text='Enter the link'
