@@ -5,10 +5,15 @@
 
 {% block content %}
 <h1>CS:GO_tube</h1>
-<h2>Maps</h2>
-<ul>
+<h2 class="px-3">Maps</h2>
+<ul class="container-fluid img_link row">
   {% for map in maps_list %}
-  <li><a href="/catalog/map/{{map.pk}}">{{ map}} - {{ map.videos_set.all.count }}</a>  </li>
+  <li class="col-md-3">
+    <a href="/catalog/map/{{map.pk}}">
+      <img src="https://cstube.s3.amazonaws.com/de_{{ map }}.jpg" alt="">
+      <p>{{ map }} - {{ map.videos_set.all.count }}</p>
+    </a>
+  </li>
   {% endfor %}
 </ul>
 {% endblock %}

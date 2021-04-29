@@ -5,11 +5,11 @@
 
 {% block content %}
 <h1>CS:GO_tube</h1>
-<form action="{% url 'search_results' %}" method="get">
+<form class="search_video m-3" action="{% url 'search_results' %}" method="get">
   <input name="q" type="text" placeholder="Search...">
 </form>
 <h2>Videos</h2>
-<ul>
+<ul class="detail_list text-capitalize">
   {% for video in videos_list|dictsortreversed:"id"%}
   <li>
     <a href="/catalog/videos/{{video.pk}}">

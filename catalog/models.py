@@ -31,7 +31,10 @@ class Videos(models.Model):
     TYPE = (
         ('Smoke', 'smoke'),
         ('Molly', 'molly'),
-        ('Flash', 'flash')
+        ('Flash', 'flash'),
+        ('Nade', 'grenade'),
+        ('Strat', 'strat'),
+        ('Misc', 'misc'),
     )
     type_video = models.CharField(
         max_length=6,
