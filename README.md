@@ -14,7 +14,7 @@ You can also watch csgo livestream on twitch with the most viewers and see top 5
     timestamp,
     link,
     which map it belongs,
-    which site, (A,B,Mid)
+    which site (A,B,Mid),
     video (nade) type (smoke, molly, flash, grenade, strat, misc')
 * Most viewed cs:go live stream can be watched, also top 5 list with links can be seen.
 
