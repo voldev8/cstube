@@ -6,17 +6,17 @@ You can also watch csgo livestream on twitch with the most viewers and see top 5
 
 
 ## Some Notes
-List of all videos sorted by newest first and with a search function.
-Videos are also categorized by map and sorted by location in the map.
-New videos can be added by Add a Video form.
-Each video has
+* List of all videos sorted by newest first and with a search function.
+* Videos are also categorized by map and sorted by location in the map.
+* New videos can be added by Add a Video form.
+* Each video has
     title,
     timestamp,
     link,
     which map it belongs,
     which site, (A,B,Mid)
     video (nade) type (smoke, molly, flash, grenade, strat, misc')
-Most viewed cs:go live stream can be watched, also top 5 list with links can be seen.
+* Most viewed cs:go live stream can be watched, also top 5 list with links can be seen.
 
 
 ## Tech Stack / Built With
