@@ -26,6 +26,7 @@ Most viewed cs:go live stream can be watched, also top 5 list with links can be 
 ## REQUIRED ENVIRONMENT VARIABLES:
 
 [Twitch Authentication](https://dev.twitch.tv/docs/authentication)
+
     TWITCH_CLIENT_SECRET 
     In views.py twitch_auth function client_id should be changed to yours.
     client_secret should be authenticated from twitch.
