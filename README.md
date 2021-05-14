@@ -1,4 +1,4 @@
-# Your Project Title
+# CS:GO_Tube
 This project is for cs:go players who is looking to access necessary and catogorized nade videos by time on youtube. 
 You can also watch csgo livestream on twitch with the most viewers and see top 5.
 
@@ -25,7 +25,7 @@ Most viewed cs:go live stream can be watched, also top 5 list with links can be 
 
 ## REQUIRED ENVIRONMENT VARIABLES:
 
-    TWITCH_CLIENT_SECRET = (https://dev.twitch.tv/docs/authentication)
+    TWITCH_CLIENT_SECRET = [Twitch Authentication](https://dev.twitch.tv/docs/authentication)
     In views.py twitch_auth function client_id should be changed to yours.
     client_secret should be authenticated from twitch.
 
