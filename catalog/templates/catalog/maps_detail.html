@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block title %} | {{ maps }} {% endblock %}
+
+{% block content %}
+<div class="row m-2">
+  <h2 class="d-inline">Map: {{ maps }}</h2>
+  <img id="map_logo"  class="mx-2 align-self-center d-inline" src="https://cstube.s3.amazonaws.com/icon_de_{{ maps }}.png" alt="logo of {{ maps }}">
+</div>
+  <ul class="detail_list text-capitalize">
+    {% for video in maps.videos_set.all|dictsort:"site" %}
+    <!-- <li><a href="{{ video.link }}" target="_blank">{{ video }} / {{video.site}}</a></li> -->
+    <li>
+      <a href="/catalog/videos/{{video.pk}}">
+        {% if video.admin_permission %}
+          {{ video }} - {{ video.site }}
+        {% endif %}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

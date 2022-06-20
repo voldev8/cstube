@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h2>Search Results</h2>
+<ul class="detail_list text-capitalize search_detail_list">
+  {% for video in videos_list %}
+  <li id="search_result_list" class="slide-out">
+    <a href="/catalog/videos/{{video.pk}}">
+      {{ video }} - {{ video.map_belong }}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

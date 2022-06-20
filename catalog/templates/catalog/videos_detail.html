@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+<!-- title -->
+{% block title %} | {{ videos.title }} {% endblock %}
+
+{% block content %}
+<div class="video_player_outer">
+  <h2>Video: {{ videos.title }}</h2>
+  <div class="youtube_player video_player">
+    <iframe  
+      width="100%" 
+      height="100%" 
+      src="https://www.youtube.com/embed/{{ videos.youtube_id }}" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen
+      >
+    </iframe>
+  </div>
+</div>
+
+{% endblock %}
