@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Oswald&family=Lato&display=swap" rel="stylesheet"> 
   <!-- Add additional CSS in static file -->
   {% load static %}
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
 </head>
 
 <body>
@@ -24,6 +24,7 @@
           <li><a href="{% url 'maps' %}">All maps</a></li>
           <li><a href="{% url 'videos' %}">All videos</a></li>
           <li><a href="{% url 'video-create' %}">Add a video</a></li>
+          <li><a href="{% url 'links' %}">Fav Csgonades</a></li>
           <li><a href="{% url 'twitch' %}">Twitch</a></li>
         </ul>
         {% endblock %}

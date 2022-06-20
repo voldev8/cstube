@@ -12,7 +12,9 @@
     <!-- <li><a href="{{ video.link }}" target="_blank">{{ video }} / {{video.site}}</a></li> -->
     <li>
       <a href="/catalog/videos/{{video.pk}}">
-        {{ video }} - {{ video.site }}
+        {% if video.admin_permission %}
+          {{ video }} - {{ video.site }}
+        {% endif %}
       </a>
     </li>
     {% endfor %}

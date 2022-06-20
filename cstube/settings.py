@@ -19,9 +19,10 @@ import environ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-base = environ.Path(__file__) - 2 # two folders back (/a/b/ - 2 = /)
+base = environ.Path(__file__) - 2  # two folders back (/a/b/ - 2 = /)
 env = environ.Env()
-environ.Env.read_env(env_file=base('.env')) # reading .env file  # reading .env file
+# reading .env file  # reading .env file
+environ.Env.read_env(env_file=base('.env'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -90,7 +91,7 @@ DATABASES = {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
-        'default': {
+    'default': {
 
         'ENGINE': env('DATABASE_ENGINE'),
 
@@ -145,7 +146,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 # The absolute path to the directory where collectstatic will collect static files for deployment.
-STATIC_ROOT = BASE_DIR / 'staticfiles'  #. os.path.join(BASE_DIR, 'staticfiles')
+# . os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # The URL to use when referring to static files (where they will be served from)
 STATIC_URL = '/static/'

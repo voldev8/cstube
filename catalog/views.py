@@ -4,17 +4,18 @@ from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.postgres.search import SearchVector
 
-from catalog.models import Maps, Videos
+from catalog.models import Maps, Videos, Links
 import requests
 import environ
 from pathlib import Path
+
 
 def index(request):
     """View function for home page of site."""
 
     # Generate counts of some of the main objects
     num_maps = Maps.objects.all().count()
-    num_videos = Videos.objects.all().count()
+    num_videos = Videos.objects.filter(admin_permission=True).count()
 
     context = {
         'num_maps': num_maps,
@@ -23,6 +24,73 @@ def index(request):
 
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html', context=context)
+
+
+class MapView(generic.ListView):
+    model = Maps
+
+
+class MapDetailView(generic.DetailView):
+    model = Maps
+
+
+class LinkView(generic.ListView):
+    model = Links
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the maps
+        context['map_link_list'] = Maps.objects.all()
+        return context
+
+
+class LinkDetailView(generic.DetailView):
+    model = Links
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the maps
+        context['collections'] = Maps.objects.all()
+        context['map_link_list_detail'] = get_object_or_404(
+            Maps, pk=self.kwargs['pk'])
+        return context
+
+
+class VideoView(generic.ListView):
+    model = Videos
+
+    queryset = Videos.objects.filter(admin_permission=True)
+
+    # def filter_map(self, map_name):
+    #     return Videos.objects.filter(map_belong__icontains=map_name)
+
+
+class VideoDetailView(generic.DetailView):
+    model = Videos
+
+
+class SearchResultsView(generic.ListView):
+    model = Videos
+    template_name = 'search_results.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        # object_list = Videos.objects.filter(
+        #     Q(title__icontains=query) | Q(map_belong__name__icontains=query)
+        # )
+        object_list = Videos.objects.annotate(search=SearchVector(
+            'title', 'map_belong__name')).filter(search=query, admin_permission=True)
+        print(query)
+        return object_list
+
+
+class VideoCreate(CreateView):
+    model = Videos
+    fields = ['title', 'link', 'map_belong',
+              'type_video', 'site']
+
 
 def twitch(request):
     """
@@ -40,7 +108,7 @@ def twitch(request):
     else:
         result['success'] = False
         if response.status_code == 404:  # NOT FOUND
-            result['message'] = 'No entry found for "%s"' % word
+            result['message'] = 'No entry found.'
         else:
             result['message'] = 'The Twitch API is not available at the moment.'
     context = {
@@ -48,36 +116,6 @@ def twitch(request):
         'streams': result['data']
     }
     return render(request, 'twitch.html', context=context)
-
-class MapView(generic.ListView):
-    model = Maps
-
-class MapDetailView(generic.DetailView):
-    model = Maps
-
-class VideoView(generic.ListView):
-    model = Videos
-
-    def filter_map(self, map_name):
-        return Videos.objects.filter(map_belong__icontains=map_name)
-
-class VideoDetailView(generic.DetailView):
-    model = Videos
-class SearchResultsView(generic.ListView):
-    model = Videos
-    template_name = 'search_results.html'
-    def get_queryset(self): 
-        query = self.request.GET.get('q')
-        # object_list = Videos.objects.filter(
-        #     Q(title__icontains=query) | Q(map_belong__name__icontains=query)
-        # )
-        object_list = Videos.objects.annotate(search=SearchVector('title', 'map_belong__name')).filter(search=query)
-        print(query)
-        return object_list
-
-class VideoCreate(CreateView):
-    model = Videos
-    fields = ['title', 'link', 'map_belong', 'type_video', 'site']
 
 
 def twitch_auth():
@@ -87,9 +125,10 @@ def twitch_auth():
     # Build paths inside the project like this: BASE_DIR / 'subdir'.
     BASE_DIR = Path(__file__).resolve().parent.parent
 
-    base = environ.Path(__file__) - 2 # two folders back (/a/b/ - 2 = /)
+    base = environ.Path(__file__) - 2  # two folders back (/a/b/ - 2 = /)
     env = environ.Env()
-    environ.Env.read_env(env_file=base('.env')) # reading .env file  # reading .env file
+    # reading .env file  # reading .env file
+    environ.Env.read_env(env_file=base('.env'))
     client_id = 'kg7560bqizr6ip9dk1y9lsd0xsw359'
     client_secret = env('TWITCH_CLIENT_SECRET')
 
@@ -99,7 +138,7 @@ def twitch_auth():
         "grant_type": 'client_credentials'
     }
     r = requests.post('https://id.twitch.tv/oauth2/token', body)
-    keys = r.json();
+    keys = r.json()
 
     headers = {
         'Client-ID': client_id,
