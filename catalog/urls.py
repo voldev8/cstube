@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+
 urlpatterns = [
     path('', views.index, name='index'),
     path('twitch/', views.twitch, name='twitch'),
@@ -12,4 +13,8 @@ urlpatterns = [
     path('videos/<int:pk>', views.VideoDetailView.as_view(), name='videos-detail'),
     path('search/', views.SearchResultsView.as_view(), name='search_results'),
     path('videos/create/', views.VideoCreate.as_view(), name='video-create'),
+    path('videos/<int:pk>/add_favorite_video/',
+         views.add_favorite_video, name='add-favorite-video'),
+    path('videos/<int:pk>/remove_favorite_video/',
+         views.remove_favorite_video, name='remove-favorite-video'),
 ]

@@ -3,6 +3,7 @@ from django.db.models import Q
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.postgres.search import SearchVector
+from django.http import HttpResponseRedirect
 
 from catalog.models import Maps, Videos, Links
 import requests
@@ -69,6 +70,22 @@ class VideoView(generic.ListView):
 
 class VideoDetailView(generic.DetailView):
     model = Videos
+
+
+def add_favorite_video(request, pk):
+    if request.method == 'POST':
+        favorite = Videos.objects.get(pk=pk)
+        user = request.user
+        user.favorite_videos.add(favorite)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+def remove_favorite_video(request, pk):
+    if request.method == 'POST':
+        favorite = Videos.objects.get(pk=pk)
+        user = request.user
+        user.favorite_videos.remove(favorite)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 class SearchResultsView(generic.ListView):

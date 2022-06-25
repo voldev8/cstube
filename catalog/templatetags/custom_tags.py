@@ -11,3 +11,8 @@ def map_filter(value):
         if(map.admin_permission == True):
             maps.append(map)
     return len(maps)
+
+
+@register.filter
+def replace_with_space(value):
+    return value.replace("-", " ")

@@ -16,8 +16,17 @@ import dj_database_url
 import django_heroku
 import environ
 
+# Redirect to home URL after login (Default redirects to /accounts/profile/)
+# LOGIN_REDIRECT_URL = '/'
+# LOGOUT_REDIRECT_URL = '/'
+# LOGIN_URL = 'login'
+# LOGOUT_URL = 'logout'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 base = environ.Path(__file__) - 2  # two folders back (/a/b/ - 2 = /)
 env = environ.Env()
@@ -49,6 +58,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'catalog.apps.CatalogConfig',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -67,7 +77,7 @@ ROOT_URLCONF = 'cstube.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,6 +136,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTH_USER_MODEL = 'accounts.User'
 
 
 # Internationalization

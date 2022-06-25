@@ -3,6 +3,7 @@
 {% block title %} | {{ map_link_list_detail }} {% endblock %}
 
 {% block content %}
+{% load custom_tags %}
 <div class="row m-2">
   <h2 class="d-inline">Map: {{ map_link_list_detail }}</h2>
   <img 
@@ -19,7 +20,7 @@
     <h4>{{ category.grouper }}</h4>
     <ul class="detail_list text-capitalize">
     {% for link in category.list|dictsort:"site" %}
-    <li><a href="{{ link.link }}" target="_blank">{{ link }} - {{link.site}}</a></li>
+    <li><a href="{{ link.link }}" target="_blank">{{ link.title | replace_with_space }} - {{link.site}}</a></li>
     {% endfor %}
     </ul>
 {% endfor %}
