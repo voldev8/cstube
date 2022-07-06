@@ -5,16 +5,19 @@
 
 {% block content %}
 {% load custom_tags %}
-<h1>CS:GO_tube</h1>
+
 <h2 class="px-3">Maps</h2>
 <ul class="container-fluid img_link row">
   {% for map in maps_list %}
-  <li class="col-md-3">
-    <a href="/catalog/map/{{map.pk}}">
-      <img src="https://cstube.s3.amazonaws.com/de_{{ map }}.jpg" alt="">
-      <p>{{ map }} - {{ map.videos_set.all | map_filter}}</p>
-    </a>
+  <li class="col-md-4 my-2">
+    <div class="inner-map">
+      <a href="/catalog/map/{{map.pk}}">
+        <img src="https://cstube.s3.amazonaws.com/de_{{ map }}.jpg" alt="">
+        <p>{{ map }} - {{ map.videos_set.all | map_filter}}</p>
+      </a>
+    </div>
   </li>
   {% endfor %}
 </ul>
+
 {% endblock %}

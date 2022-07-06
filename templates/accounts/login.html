@@ -3,48 +3,66 @@
 {% block title %} | Account Login {% endblock %}
 <!-- content -->
 {% block content %}
-<section id="login" class="bg-light py-5">
+
   <div class="container">
-    <div class="row">
+    <div class="row py-5">
       <div class="col-md-6 mx-auto">
-        <div class="card">
-          <div class="card-header bg-primary text-white">
-            <h4><i class="fas fa-sign-in-alt"></i> Login</h4>
+        <div class="card shadow-lg border-0">
+          <div class="card-header bg-primary text-white d-flex justify-content-between">
+            <h4>
+              Login <i class="bi bi-box-arrow-in-right"></i>
+            </h4>
+            <img class="csgo-icon"  src="https://cstube.s3.amazonaws.com/csgo-icon.png" alt="csgo-icon"/> 
           </div>
           <div class="card-body">
             <!-- Alerts -->
+            {% include 'partials/_alerts.html' %}
             <form action="{% url 'login' %}" method="POST">
               {% csrf_token %}
-              <div class="form-group">
-                <label for="username">Username</label>
+              <div class="form-floating mb-3">
                 <input
-                  type="text"
-                  name="username"
-                  class="form-control"
-                  required
+                type="text"
+                name="username"
+                class="form-control shadow-none form_input"
+                id="username"
+                placeholder="Username"
+                required
                 />
+                <label for="username" class="text-dark">Username</label>
               </div>
 
-              <div class="form-group">
-                <label for="password2">Password</label>
+              <div class="form-floating mb-3">
                 <input
-                  type="password"
-                  name="password"
-                  class="form-control"
-                  required
+                type="password"
+                name="password"
+                class="form-control shadow-none form_input"
+                id="password"
+                placeholder="Password"
+                required
                 />
+                <label for="password" class="text-dark">Password</label>
               </div>
 
               <input
                 type="submit"
                 value="Login"
-                class="btn btn-secondary btn-block"
+                class="btn btn-block float-end mt-5 login_btn"
               />
             </form>
           </div>
         </div>
+        <div class="pt-5 px-2 d-flex align-items-center justify-content-center">
+          <div class="align-self-center">
+            Not a Csgo_tuber yet! You can register here 
+            <i class="bi bi-arrow-right-circle mx-5" style="color: #efc88c;">
+
+            </i>
+          </div>
+          <a class="btn btn-primary register_btn" href="{% url 'register' %}" role="button"> Register</a>
+        </div>
+
       </div>
     </div>
   </div>
-</section>
+
 {% endblock %}

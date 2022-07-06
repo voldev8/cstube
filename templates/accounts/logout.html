@@ -1,6 +1,10 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <p>Logged out!</p>
-  <a href="{% url 'login'%}">Click here to login again.</a>
+<div class="container mt-5">
+  <div class="col-md-6 mx-auto d-flex flex-column">
+    <h4 class="text-center"> You are logged out!</h4>
+    <a class="align-self-center mt-5 btn btn-primary" href="{% url 'login'%}">Click here to login again.</a>
+  </div>
+</div>
 {% endblock %}

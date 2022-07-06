@@ -3,20 +3,42 @@
 {% block title %} | {{ maps }} {% endblock %}
 
 {% block content %}
-<div class="row m-2">
-  <h2 class="d-inline">Map: {{ maps }}</h2>
-  <img id="map_logo"  class="mx-2 align-self-center d-inline" src="https://cstube.s3.amazonaws.com/icon_de_{{ maps }}.png" alt="logo of {{ maps }}">
+{% load custom_tags %}
+
+<div class="d-flex flex-row justify-content-start m-2">
+  <h2 class="align-self-center">Map: {{ maps }}</h2>
+  <img id="map_logo"  class="mx-2 align-self-center" src="https://cstube.s3.amazonaws.com/icon_de_{{ maps }}.png" alt="logo of {{ maps }}">
 </div>
-  <ul class="detail_list text-capitalize">
-    {% for video in maps.videos_set.all|dictsort:"site" %}
-    <!-- <li><a href="{{ video.link }}" target="_blank">{{ video }} / {{video.site}}</a></li> -->
-    <li>
+<ul class="detail_list text-capitalize">
+  {% regroup maps.videos_set.all|dictsortreversed:"type_video" by type_video as grouped_by_category %}
+
+  {% for category in grouped_by_category %}
+  <div class="d-flex flex-row justify-content-start m-2 detail_header">
+    <h4>{{ category.grouper }}</h4>
+    <img 
+      class="type_video_icon align-self-center rounded-circle" 
+      src="https://cstube.s3.amazonaws.com/{{ category.grouper }}.png" 
+      alt="{{ category.grouper }}"
+    >
+  </div>
+
+  <ul class="detail_list text-capitalize mb-5">
+
+    {% for video in category.list|dictsort:"site" %}
+    <li class="d-flex flex-row">
       <a href="/catalog/videos/{{video.pk}}">
         {% if video.admin_permission %}
-          {{ video }} - {{ video.site }}
+          {{ video }} - <span class="link_info_end">{{ video.site }}</span>
+          {% if video in user.favorite_videos.all %}
+          <i class="bi bi-star-fill link_favorited mx-2 align-self-center"></i>
+          {% endif %}
         {% endif %}
       </a>
     </li>
     {% endfor %}
+    
   </ul>
+  {% endfor %}
+
+</ul>
 {% endblock %}

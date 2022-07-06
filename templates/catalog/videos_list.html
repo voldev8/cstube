@@ -4,21 +4,25 @@
 {% block title %} | Videos {% endblock %}
 
 {% block content %}
-<!-- {% load custom_tags %} -->
-<h1>CS:GO_tube</h1>
+
 <form class="search_video m-3" action="{% url 'search_results' %}" method="get">
   <input name="q" type="text" placeholder="Search...">
 </form>
+
 <h2>Videos</h2>
 <ul class="detail_list text-capitalize">
-  <!-- {% with videos_list_filtered=videos_list|map_filter %} -->
+
   {% for video in videos_list|dictsortreversed:"id"%}
-  <li>
+  <li class="d-flex flex-row">
     <a href="/catalog/videos/{{video.pk}}">
-      {{ video }} - {{ video.map_belong }}
+      {{ video }} - <span class="map_belong_info">{{ video.map_belong }}</span>
     </a>
+    {% if video in user.favorite_videos.all %}
+    <i class="bi bi-star-fill link_favorited mx-2 align-self-center"></i>
+    {% endif %}
   </li>
   {% endfor %}
-  <!-- {% endwith %} -->
+
 </ul>
+
 {% endblock %}

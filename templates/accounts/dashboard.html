@@ -3,31 +3,39 @@
 {% block title %} | User Dashboard {% endblock %}
 <!-- content -->
 {% block content %}
-<section id="showcase-inner" class="py-5 text-white">
-  <div class="container">
-    <div class="row text-center">
-      <div class="col-md-12">
-        <h1 class="display-4">User Dashboard</h1>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section id="dashboard" class="py-4">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        {% if user.is_authenticated %}
-        <h2>Welcome {{ user.username }}</h2>
-        {% for video in user.favorite_videos.all%}
-          {{video.id}}
+
+{% regroup user.favorite_videos.all|dictsort:"map_belong.name" by map_belong as grouped_by_category %}
+
+  <div class="detail_header p-2 d-flex align-items-center justify-content-between">
+    <h2 style="text-decoration: none;"> {{ user.username }}'s favorites</h2>
+    <i class="bi bi-person-badge fs-3 px-2"></i>
+  </div>
+
+  {% for category in grouped_by_category %}
+  <div class="heading_underline d-flex flex-row justify-content-start mt-4">
+    <h4>{{ category.grouper }}</h4>
+    <img 
+      class="type_video_icon align-self-center rounded-circle shadow" 
+      src="https://cstube.s3.amazonaws.com/icon_de_{{ category.grouper }}.png"
+      alt="{{ category.grouper }}"
+    >
+  </div>
+
+  <ul class="detail_list text-capitalize">
+
+    {% for video in category.list|dictsort:"site" %}
+    <li class="d-flex flex-row">
+      <a href="/catalog/videos/{{video.pk}}">
+        {% if video.admin_permission %}
+          {{ video }} - <span class="link_info_end">{{ video.site }}</span>
+        {% endif %}
+      </a>
+    </li>
+    {% endfor %}
+    
+  </ul>
         {% endfor %}
         <!-- {{user.favorite_links.all}} -->
-        {% else %}
-        <p>Please login</p>
-        {% endif %}
-      </div>
-    </div>
-  </div>
-</section>
+
 {% endblock %}

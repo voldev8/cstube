@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
+from django.contrib.auth.decorators import login_required
 from .models import User
 
 
@@ -23,8 +24,8 @@ def register(request):
                 # messages.success(request, 'You are now logged in')
                 # return redirect('index')
                 user.save()
-                messages.success(
-                    request, 'You are now registered and can log in')
+                # messages.success(
+                #     request, 'You are now registered and can log in')
                 return redirect('login')
         else:
             messages.error(request, 'Passwords do not match')
@@ -42,7 +43,7 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            messages.success(request, 'You are now logged in')
+            # messages.success(request, 'You are now logged in')
             return redirect('dashboard')
         else:
             messages.error(request, 'Invalid credentials')
@@ -57,9 +58,11 @@ def logout(request):
     return render(request, 'accounts/logout.html')
 
 
+@login_required
 def dashboard(request):
     user_contacts = User.objects.all()
+
     context = {
-        'contacts': user_contacts
+        'contacts': user_contacts,
     }
     return render(request, 'accounts/dashboard.html', context)

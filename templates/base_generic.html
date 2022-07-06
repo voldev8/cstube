@@ -5,9 +5,10 @@
   <title>CS:GO_tube {% block title %}{% endblock %}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
-  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="icon" href="https://cstube.s3.amazonaws.com/csgo-logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Oswald&family=Lato&display=swap" rel="stylesheet"> 
   <!-- Add additional CSS in static file -->
   {% load static %}
@@ -15,45 +16,71 @@
 </head>
 
 <body>
-  <div class="container-fluid">
-    <div class="row main_page">
-      <nav class="col-sm-2 nav_style">
-        {% block sidebar %}
-        <ul class="sidebar-nav">
-          <ul>
-            {% if user.is_authenticated %}
-            <li><a href="{% url 'dashboard' %}">{{ user.get_username|capfirst }}</a></li>
-            <!-- "next" value to redirect the user back to the page where they first clicked the login/logout link. -->
-            <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
-            {% else %}
-            <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
-            {% endif %}
-          </ul>
-          <li><a href="{% url 'index' %}">Home</a></li>
-          <li><a href="{% url 'maps' %}">All maps</a></li>
-          <li><a href="{% url 'videos' %}">All videos</a></li>
-          <li><a href="{% url 'video-create' %}">Add a video</a></li>
-          <li><a href="{% url 'links' %}">Fav Csgonades</a></li>
-          <li><a href="{% url 'twitch' %}">Twitch</a></li>
-        </ul>
-        {% endblock %}
-      </nav>
-      <div class="col-sm-10 ">
-        {% block content %}{% endblock %}
+  
+    <nav 
+      class="navbar shadow-sm fixed-top navbar-expand-md px-4" 
+      style="background-image:linear-gradient(to bottom right, #000037, #3559bd)"
+    >
+      <div class="container-fluid">
+        <div class="hamburger-icon" id="icon">
+          <div class="icon-1" id="a"></div>
+          <div class="icon-2" id="b"></div>
+          <div class="icon-3" id="c"></div>
+          <div class="clear"></div>
+        </div>
+        <a class="navbar-brand logo" href="{% url 'index' %}">CS:GO_tube</a>
+        <div class="dropstart">
+          {% if user.is_authenticated %}
+          <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <span>{{ user.get_username|capfirst }}</span> 
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="{% url 'dashboard' %}">Dashboard</a>
+            <a class="dropdown-item" href="{% url 'logout'%}?next={{request.path}}">Logout</a>
+          </div>
+          {% else %}
+          <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="bi bi-person-workspace"></i>
+            <span class="user_icon">User</span> 
+          </button>
+          <div class="dropdown-menu dropdown-menu-start" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="{% url 'login'%}?next={% url 'dashboard'%}">Login</a>
+            <a class="dropdown-item" href="{% url 'register'%}">Register</a>
+          </div>
+          {% endif %}
+        </div>
       </div>
-      <footer class="footer">
-        <a href="https://github.com/voldev8/cstube">
-          <img src="https://cstube.s3.amazonaws.com/github-32.png" alt="github logo">
-        </a>
-        <p>
-          <span>Voldev</span> @2021 All rights reserved.
-        </p>
-      </footer>
+    </nav>
+
+    <div class="container-fluid main">
+      <div class="row">
+        <div class="col-md-3 sidebar-outer">
+          <ul class="sidebar-nav">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'maps' %}">All maps</a></li>
+            <li><a href="{% url 'videos' %}">All videos</a></li>
+            <li><a href="{% url 'video-create' %}">Add a video</a></li>
+            <li><a href="{% url 'links' %}">Fav Csgonades</a></li>
+            <li><a href="{% url 'twitch' %}">Twitch</a></li>
+          </ul>
+        </div>
+        <div class="col-md-9">
+          {% block content %}{% endblock %}
+        </div>
+      </div>
     </div>
-  </div>
+
+    <footer class="footer">
+      <a href="https://github.com/voldev8/cstube">
+        <img src="https://cstube.s3.amazonaws.com/github-32.png" alt="github logo">
+      </a>
+      <p>
+        <span>Voldev</span> @2022 All rights reserved.
+      </p>
+    </footer>
+
   <script src="{% static 'js/scripts.js' %}"></script> 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
 </body>
 
 </html>

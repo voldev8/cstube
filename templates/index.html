@@ -1,19 +1,37 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-<h1>CS:GO_tube</h1>
-<ul>
-  <li><strong>Maps:</strong> {{ num_maps }}</li>
-  <li><strong>Videos:</strong> {{ num_videos }}</li>
-</ul>
-  <h4>Some useful links:</h4>
-<ul id="useful_links">
-  <li><a href="https://totalcsgo.com/callouts" target="_blank">Callouts</a></li>
-  <li><a href="https://csgostash.com/" target="_blank">Skins</a></li>
-  <li><a href="https://www.csgonades.com/" target="_blank">Utility</a></li>
-  <li><a href="https://www.youtube.com/channel/UC_FUC8gOoKMBURcsCCCS9JA" target="_blank">buXers channel</a></li>
-  <li><a href="https://www.hltv.org/" target="_blank">hltv</a></li>
-  <li><a href="https://liquipedia.net/counterstrike/Main_Page" target="_blank">Liquipedia</a></li>
-  <li><a href="https://blog.counter-strike.net/" target="_blank">Blog-cs:go</a></li>
-</ul>
+
+<div class="container-fluid col-md-6 py-5">
+  <div class="d-flex align-items-center justify-content-between">
+    <h4>Welcome to Cs:go_tube.</h4>
+    <i class="bi bi-info-square fs-3"></i>
+  </div>
+  <p class="description lh-base pb-4">
+    You will find quick and easy reminder videos or links for utility line ups here. You can choose a map from <span>All maps</span>   
+    to see available line ups categorized by utility type. You can access <span>All videos</span> and search for a specific one.
+    <span>Add a video</span> by sharing a Youtube link with a specific timestamp (when you click on share button of a youtube video, 
+    you will see a "Start at" checkbox).Videos will be available to public once they are approved by admins. You can have access to 
+    a list of useful links that will take you to specific csgonades website gifs on <span>Fav Csgonades</span>.
+    (the ones that are most useful in my opinion) And most popular Counter Strike: Global Offensive streams on <span>Twitch</span>.
+  </p>
+  <ul>
+    <li><strong>Maps:</strong> {{ num_maps }}</li>
+    <li><strong>Videos:</strong> {{ num_videos }}</li>
+  </ul>
+</div>
+
+<div class="pb-5">
+  <h3>And some useful links:</h3>
+  <ul id="useful_links">
+    <li><a href="https://totalcsgo.com/callouts" target="_blank">Callouts</a></li>
+    <li><a href="https://csgostash.com/" target="_blank">Skins</a></li>
+    <li><a href="https://www.csgonades.com/" target="_blank">Utility</a></li>
+    <li><a href="https://www.youtube.com/channel/UC_FUC8gOoKMBURcsCCCS9JA" target="_blank">buXers channel</a></li>
+    <li><a href="https://www.hltv.org/" target="_blank">hltv</a></li>
+    <li><a href="https://liquipedia.net/counterstrike/Main_Page" target="_blank">Liquipedia</a></li>
+    <li><a href="https://blog.counter-strike.net/" target="_blank">Blog-cs:go</a></li>
+  </ul>
+</div>
+
 {% endblock %}

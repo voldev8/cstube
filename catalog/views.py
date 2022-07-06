@@ -6,6 +6,7 @@ from django.contrib.postgres.search import SearchVector
 from django.http import HttpResponseRedirect
 
 from catalog.models import Maps, Videos, Links
+
 import requests
 import environ
 from pathlib import Path
@@ -18,9 +19,14 @@ def index(request):
     num_maps = Maps.objects.all().count()
     num_videos = Videos.objects.filter(admin_permission=True).count()
 
+    # with urllib.request.urlopen("https://www.reddit.com/r/GlobalOffensive/top.json?t=week") as url:
+    #     data = json.loads(url.read().decode())
+
+    # reddit_data = data['data']['children'][:10]
     context = {
         'num_maps': num_maps,
         'num_videos': num_videos,
+        # 'reddit_data': reddit_data
     }
 
     # Render the HTML template index.html with the data in the context variable

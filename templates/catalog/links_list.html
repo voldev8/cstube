@@ -4,16 +4,19 @@
 {% block title %} | Maps (csgonades){% endblock %}
 
 {% block content %}
-<h1>CS:GO_tube</h1>
+
 <h2 class="px-3">Maps (csgonades)</h2>
 <ul class="container-fluid img_link row">
   {% for map in map_link_list %}
-  <li class="col-md-3">
-    <a href="/catalog/map_link/{{map.pk}}">
-      <img src="https://cstube.s3.amazonaws.com/de_{{ map }}.jpg" alt="">
-      <p>{{ map }} - {{ map.links_set.all.count }}</p>
-    </a>
+  <li class="col-md-4 my-2">
+    <div class="inner-map">
+      <a href="/catalog/map_link/{{map.pk}}">
+        <img src="https://cstube.s3.amazonaws.com/de_{{ map }}.jpg" alt="">
+        <p>{{ map }} - {{ map.links_set.all.count }}</p>
+      </a>
+    </div>
   </li>
   {% endfor %}
 </ul>
+
 {% endblock %}
