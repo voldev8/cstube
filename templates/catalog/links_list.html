@@ -12,7 +12,7 @@
     <div class="inner-map">
       <a href="/catalog/map_link/{{map.pk}}">
         <img src="https://cstube.s3.amazonaws.com/de_{{ map }}.jpg" alt="">
-        <p>{{ map }} - {{ map.links_set.all.count }}</p>
+        <p><span id="maps_name">{{ map }}</span> - <span id="maps_number">{{ map.links_set.all.count }}</span></p>
       </a>
     </div>
   </li>

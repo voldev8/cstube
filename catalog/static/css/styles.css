@@ -113,6 +113,7 @@ h2, h3, h4 {
 
 /*home*/
 #info_icon {
+  animation: flip 5s infinite;
   color: #6A0DAD;
   text-shadow: 2px 2px rgba(255,255,255,0.2);
 }
@@ -154,7 +155,7 @@ h2, h3, h4 {
   transition: all .6s ease-in-out;
 }
 .inner-map:hover {
-  box-shadow: 0.5px 0.5px 6px 1px #000000;
+  box-shadow: 2px 2px 6px 3px rgba(0,0,0, 0.6), -2px -2px 6px 3px rgba(0,0,0, 0.6);
 }
 .img_link li{
   list-style: none;
@@ -163,11 +164,12 @@ h2, h3, h4 {
   height: 100%;
   width: 100%; 
   object-fit: cover;
-  transition: all .4s ease-in;
+  transition: all 1s linear;
 }
 .img_link img:hover {
-  transform: scale(1.02);
-  transform-origin: top;
+  transform: scale(1.05);
+  transform-origin: center;
+  filter: grayscale(1) blur(1px);
 }
 .img_link p {
   position: absolute;
@@ -179,9 +181,23 @@ h2, h3, h4 {
   color: white;
   padding-bottom: 0;
   text-align: center;
-  animation-duration: 3s;
-  animation-name: slideIn;
+  /* animation-duration: 3s; */
+  /* animation-name: slideIn; */
+  transform: scale(0.64);
+  animation: scale 1s forwards cubic-bezier(0.5, 1, 0.89, 1);
 }
+#maps_name {
+  opacity: 0;
+  filter: blur(4px);
+  animation: fade-in 1.2s 0.6s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+#maps_number {
+  opacity: 0;
+  filter: blur(4px);
+  animation: fade-in 1.2s 1.5s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+
 /* Maps detail */
 .detail_header {
   margin-top: 3rem;
@@ -570,3 +586,23 @@ h2, h3, h4 {
   }
 }
 
+@keyframes scale {
+  0% {
+    opacity: 0.1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+@keyframes flip {
+  0%,80% {
+    transform: rotateY(360deg) 
+  }
+}
