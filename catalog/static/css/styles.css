@@ -270,18 +270,7 @@ h2, h3, h4 {
 }
 
 /*search video*/
-.search_video input {
-  color: #ff2350;
-  box-shadow: 2px 2px 4px #4173ff;
-  border: none;
-  border-radius: 4px;
-  padding: 4px 8px;
-  transition: box-shadow 0.4s ease-out;
-}
-.search_video input:focus {
-  box-shadow: 1px 1px 16px #4173ff;
-  outline: none;
-}
+/** search form all the way down ***/
 .search_detail_list {
   overflow:hidden;
   width: max-content;
@@ -292,6 +281,26 @@ h2, h3, h4 {
 .slide-out {
   transform:translateX(100%);
 }
+
+#btn_back {
+  margin-top: 2rem;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  border: 1px solid #010048;
+  transition: opacity 0.8s;
+  opacity: 0;
+  animation: fade-in 3s 1s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+#btn_back i {
+  padding: 0;
+  margin: 0;
+  color: crimson;
+  background-color: #fff;
+  font-size: 3rem;
+  line-height: 100%;
+}
+
 
 /*add video*/
 .video_add_outer {
@@ -525,6 +534,12 @@ h2, h3, h4 {
   .detail_list  li a {
     font-size: 1rem;
   }
+  #btn_back {
+    border-radius: 50%;
+  }
+  #btn_back i {
+    font-size: 2rem;
+  }
   .video_add {
     padding: 0.5rem;
     width: 100vw;
@@ -605,4 +620,116 @@ h2, h3, h4 {
   0%,80% {
     transform: rotateY(360deg) 
   }
+}
+
+
+/* https://codepen.io/AlbertFeynman/pen/BPvzWZ */
+.search_video {
+  position: relative;
+  margin: auto;
+  width: 300px;
+  height: 80px;
+}
+.search_video .search {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  background: crimson;
+  border-radius: 50%;
+  transition: all 1s;
+  z-index: 4;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+}
+.search_video .search:hover {
+  cursor: pointer;
+}
+.search_video .search::before {
+  content: "";
+  position: absolute;
+  margin: auto;
+  top: 16px;
+  right: 0;
+  bottom: 0;
+  left: 16px;
+  width: 12px;
+  height: 2px;
+  background: white;
+  transform: rotate(45deg);
+  transition: all 0.5s;
+}
+.search_video .search::after {
+  content: "";
+  position: absolute;
+  margin: auto;
+  top: -5px;
+  right: 0;
+  bottom: 0;
+  left: -5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid white;
+  transition: all 0.5s;
+}
+.search_video input {
+  font-family: "Inconsolata", monospace;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  outline: none;
+  border: none;
+  background: crimson;
+  color: white;
+  text-shadow: 0 0 10px crimson;
+  padding: 0 80px 0 20px;
+  border-radius: 30px;
+  box-shadow: 0 0 25px 0 crimson, 0 20px 25px 0 rgba(0, 0, 0, 0.2);
+  transition: all 1s;
+  opacity: 0;
+  z-index: 5;
+  font-weight: bolder;
+  letter-spacing: 0.1em;
+}
+.search_video input:hover {
+  cursor: pointer;
+}
+.search_video input:focus {
+  width: 300px;
+  opacity: 1;
+  cursor: text;
+}
+.search_video input:focus ~ .search {
+  right: -250px;
+  background: #151515;
+  z-index: 6;
+}
+.search_video input:focus ~ .search::before {
+  top: 0;
+  left: 0;
+  width: 25px;
+}
+.search_video input:focus ~ .search::after {
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 2px;
+  border: none;
+  background: white;
+  border-radius: 0%;
+  transform: rotate(-45deg);
+}
+.search_video input::placeholder {
+  color: white;
+  opacity: 0.5;
+  font-weight: bolder;
 }
