@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
-# import django_heroku
+import django_heroku
 import environ
 
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
@@ -43,10 +43,9 @@ SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
-# DEBUG = env.bool('DJANGO_DEBUG', default=False)
-DEBUG = 'RENDER' not in os.environ
+DEBUG = env.bool('DJANGO_DEBUG', default=False)
 
-ALLOWED_HOSTS = ['csgotube.herokuapp.com', '127.0.0.1', 'https://cstube.onrender.com/']
+ALLOWED_HOSTS = ['csgotube.herokuapp.com', '127.0.0.1']
 # RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')if RENDER_EXTERNAL_HOSTNAME:    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 
@@ -180,6 +179,6 @@ MEDIA_URL = '/media/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
 options = DATABASES['default'].get('OPTIONS', {})
 options.pop('sslmode', None)
