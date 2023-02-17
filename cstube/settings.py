@@ -46,7 +46,7 @@ SECRET_KEY = env('DJANGO_SECRET_KEY')
 # DEBUG = env.bool('DJANGO_DEBUG', default=False)
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ['csgotube.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['csgotube.herokuapp.com', '127.0.0.1', 'https://cstube.onrender.com/']
 # RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')if RENDER_EXTERNAL_HOSTNAME:    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 
