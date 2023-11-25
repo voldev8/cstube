@@ -4,63 +4,68 @@
 <!-- content -->
 {% block content %}
 
-
-  <div class="container">
-    <div class="row py-5">
-      <div class="col-md-6 mx-auto">
-        <div class="card border-0">
-          <div class="card-header bg-primary text-white d-flex justify-content-between">
-            <h4>Register <i class="bi bi-person-plus-fill"></i></h4>
-            <img class="csgo-icon"  src="https://cstube.s3.amazonaws.com/csgo-icon.png" alt="csgo-icon"/> 
-          </div>
-          <div class="card-body">
-            <!-- Alerts -->
-            {% include 'partials/_alerts.html' %}
-            <form action="{% url 'register' %}" method="POST">
-              {% csrf_token %}
-              <div class="form-floating mb-3">
-                <input
+<div class="container">
+  <div class="row py-5">
+    <div class="col-md-6 mx-auto">
+      <div class="card border-0">
+        <div
+          class="card-header bg-primary text-white d-flex justify-content-between"
+        >
+          <h4>Register <i class="bi bi-person-plus-fill"></i></h4>
+          <img
+            class="cs-icon"
+            src="https://cstube.s3.amazonaws.com/cs_tube_logo.png"
+            alt="cs-icon"
+          />
+        </div>
+        <div class="card-body">
+          <!-- Alerts -->
+          {% include 'partials/_alerts.html' %}
+          <form action="{% url 'register' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-floating mb-3">
+              <input
                 type="text"
                 id="username"
                 name="username"
                 class="form-control shadow-none"
                 placeholder="Username"
                 required
-                />
-                <label for="username" class="text-dark">Username</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input
+              />
+              <label for="username" class="text-dark">Username</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
                 type="password"
                 name="password"
                 id="password"
                 class="form-control shadow-none"
                 placeholder="Password"
                 required
-                />
-                <label for="password" class="text-dark">Password</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input
+              />
+              <label for="password" class="text-dark">Password</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
                 type="password"
                 name="password2"
                 id="password2"
                 class="form-control shadow-none"
                 placeholder="Confirm Password"
                 required
-                />
-                <label for="password2" class="text-dark">Confirm Password</label>
-              </div>
-              <input
-                type="submit"
-                value="Register"
-                class="btn btn-dark btn-block float-end mt-5"
               />
-            </form>
-          </div>
+              <label for="password2" class="text-dark">Confirm Password</label>
+            </div>
+            <input
+              type="submit"
+              value="Register"
+              class="btn btn-dark btn-block float-end mt-5"
+            />
+          </form>
         </div>
       </div>
     </div>
   </div>
+</div>
 
 {% endblock %}

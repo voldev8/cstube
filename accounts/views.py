@@ -66,3 +66,6 @@ def dashboard(request):
         'contacts': user_contacts,
     }
     return render(request, 'accounts/dashboard.html', context)
+
+
+# for user registration and login using forms.ModelForm can be an option

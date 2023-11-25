@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from django.db.models import Q
 from django.views import generic
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView
 from django.contrib.postgres.search import SearchVector
 from django.http import HttpResponseRedirect
 
@@ -117,7 +116,7 @@ class VideoCreate(CreateView):
 
 def twitch(request):
     """
-    top five twitch live streams - CS:GO
+    top five twitch live streams - CS
     """
     headers = twitch_auth()
 

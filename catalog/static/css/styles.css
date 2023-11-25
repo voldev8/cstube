@@ -1,19 +1,22 @@
 body {
-  background-image: linear-gradient(to bottom right, #0026AC, rgb(174, 174, 228));
+  background-image: linear-gradient(to bottom right, #0026ac, #8888d7);
   background-repeat: no-repeat;
   background-size: cover;
   color: #ffffff;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
-h2, h3 {
+h2,
+h3 {
   text-decoration: underline;
   text-decoration-color: #ff2350;
 }
-h2, h3, h4 {
-  font-family: 'Oswald', sans-serif;
+h2,
+h3,
+h4 {
+  font-family: "Oswald", sans-serif;
   margin: 1rem;
-  text-shadow: 2px 2px 4px rgba(0,0,0, 0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* Navbar */
@@ -21,12 +24,11 @@ h2, h3, h4 {
   display: none;
 }
 .logo {
-  font-family: 'Black Ops One', cursive;
+  font-family: "Black Ops One", cursive;
   color: #f5f5f5;
   font-size: 2rem;
   /* text-shadow: 2px 2px 4px #4173ff; */
   text-shadow: 2px 2px 4px #ff2350;
-
 }
 .logo:hover {
   color: #f5f5f5;
@@ -34,11 +36,12 @@ h2, h3, h4 {
   text-shadow: 2px 2px 4px #4173ff;
 }
 #dropdownMenuButton {
-  background-color: #18181b;
+  background-color: #ff2350;
   color: #fff;
   font-weight: 800;
   font-size: 1rem;
-  box-shadow: 1px 1px 4px rgba(0,0,0, 0.5), -1px -1px 4px rgba(0,0,0, 0.5);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5), -1px -1px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
   outline: none;
   /* border: none; */
   border-color: #efc88c;
@@ -47,19 +50,18 @@ h2, h3, h4 {
 .dropdown-menu {
   background-color: #18181b;
 }
-.dropdown-menu a{
+.dropdown-menu a {
   color: #fff;
 }
 .form_input {
   outline: 0;
   border-radius: 0;
-  border:0;
-  border-bottom: 1px solid black;
+  border: 0;
+  border-bottom: 1px solid #000000;
 }
-.form_input:focus{
+.form_input:focus {
   border-bottom: 2px solid #4173ff;
 }
-
 
 /* Sidebar */
 .sidebar-nav {
@@ -70,7 +72,7 @@ h2, h3, h4 {
   list-style: none;
   color: #ffffff;
 }
-.sidebar-nav li  {
+.sidebar-nav li {
   margin: 6px 0;
 }
 .sidebar-nav li a {
@@ -79,7 +81,7 @@ h2, h3, h4 {
   font-weight: 600;
   font-size: 1.1rem;
   padding: 1px 6px;
-  transition: margin-left .2s linear;
+  transition: margin-left 0.2s linear;
   display: inline-block;
   position: relative;
 }
@@ -100,10 +102,9 @@ h2, h3, h4 {
   color: #efc88c;
 }
 .sidebar-nav li a:hover:after {
-  width: 100%; 
-  left: 0; 
+  width: 100%;
+  left: 0;
 }
-
 
 /* base */
 .main {
@@ -113,15 +114,15 @@ h2, h3, h4 {
 
 /*home*/
 #info_icon {
+  height: 2rem;
   animation: flip 5s infinite;
-  color: #6A0DAD;
-  text-shadow: 2px 2px rgba(255,255,255,0.2);
+  box-shadow: 0px 0px 6px rgba(219, 20, 60);
 }
 .description {
   text-indent: 2rem;
   text-align: justify;
-  color: #EEEEEE;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2)
+  color: #eeeeee;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 .description span {
   color: #efc88c;
@@ -129,7 +130,7 @@ h2, h3, h4 {
 }
 #useful_links {
   margin-left: 1.5rem;
-  padding:0;
+  padding: 0;
 }
 #useful_links li {
   list-style: none;
@@ -142,27 +143,28 @@ h2, h3, h4 {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 #useful_links li a:hover {
-  color: #5218FA;
-  transition: color 0.4s cubic-bezier(.17,.67,.83,.67);
+  color: #5218fa;
+  transition: color 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67);
 }
 
 /* Maps list */
 .inner-map {
   position: relative;
   border: 1px solid #ff2350;
-  box-shadow: 1px 1px 1px #000000;
+  box-shadow: 1px 1px 1px rgb(0, 0, 0);
   overflow: hidden;
-  transition: all .6s ease-in-out;
+  transition: all 0.6s ease-in-out;
 }
 .inner-map:hover {
-  box-shadow: 2px 2px 6px 3px rgba(0,0,0, 0.6), -2px -2px 6px 3px rgba(0,0,0, 0.6);
+  box-shadow: 2px 2px 6px 3px rgba(0, 0, 0, 0.6),
+    -2px -2px 6px 3px rgba(0, 0, 0, 0.6);
 }
-.img_link li{
+.img_link li {
   list-style: none;
 }
 .img_link img {
   height: 100%;
-  width: 100%; 
+  width: 100%;
   object-fit: cover;
   transition: all 1s linear;
 }
@@ -177,7 +179,7 @@ h2, h3, h4 {
   width: 100%;
   font-size: 2rem;
   font-weight: 700;
-  background-color: rgba(0,0,0, 0.5);
+  background-color: #00000080;
   color: white;
   padding-bottom: 0;
   text-align: center;
@@ -197,14 +199,13 @@ h2, h3, h4 {
   animation: fade-in 1.2s 1.5s forwards cubic-bezier(0.11, 0, 0.5, 0);
 }
 
-
 /* Maps detail */
 .detail_header {
   margin-top: 3rem;
   max-width: 32rem;
   color: #efc88c;
   background-color: #eb4036;
-  box-shadow: 3px 3px #efc88c;
+  box-shadow: 3px 3px rgb(239, 199, 138);
 }
 #map_logo {
   height: 3rem;
@@ -215,7 +216,7 @@ h2, h3, h4 {
 }
 .detail_list h4 {
   color: #efc88c;
-  text-shadow: 2px 2px 4px rgba(0,0,0, 0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 .detail_list li {
   list-style: none;
@@ -224,13 +225,13 @@ h2, h3, h4 {
   color: #ffffff;
   text-decoration: none;
   font-size: 1.2rem;
-  text-shadow: 1px 1px 1px rgba(0,0,0, 0.5);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 .type_video_icon {
   height: 2rem;
 }
 .link_info_end {
-  color: #F06449;
+  color: #f06449;
   font-weight: 700;
 }
 .map_belong_info {
@@ -238,8 +239,8 @@ h2, h3, h4 {
   font-weight: 700;
 }
 .link_favorited {
-  color: #F06449;
-  text-shadow: 1px 1px 1px rgba(0,0,0, 0.5);
+  color: #f06449;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 /*videos*/
@@ -249,7 +250,7 @@ h2, h3, h4 {
 }
 .video_player {
   border: 1px solid #ff2350;
-  box-shadow: 1px 1px 32px #4173ff;
+  box-shadow: 1px 1px 32px rgb(66, 117, 255);
 }
 .youtube_player {
   position: relative;
@@ -266,28 +267,27 @@ h2, h3, h4 {
 }
 #twitch_list {
   list-style: decimal;
-  color:#ff2350;
+  color: #ff2350;
 }
 
 /*search video*/
 /** search form all the way down ***/
 .search_detail_list {
-  overflow:hidden;
+  overflow: hidden;
   width: max-content;
 }
 #search_result_list {
-  transition:all 1s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 .slide-out {
-  transform:translateX(100%);
+  transform: translateX(100%);
 }
 
 #btn_back {
   margin-top: 2rem;
   overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-  border: 1px solid #010048;
+  border-radius: 50%;
+  border: 1px solid rgba(1, 0, 72, 0.5);
   transition: opacity 0.8s;
   opacity: 0;
   animation: fade-in 3s 1s forwards cubic-bezier(0.11, 0, 0.5, 0);
@@ -295,12 +295,12 @@ h2, h3, h4 {
 #btn_back i {
   padding: 0;
   margin: 0;
-  color: crimson;
+  color: #db143c;
   background-color: #fff;
   font-size: 3rem;
   line-height: 100%;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
-
 
 /*add video*/
 .video_add_outer {
@@ -310,8 +310,7 @@ h2, h3, h4 {
   overflow: hidden;
   padding: 2rem;
   max-width: max-content;
-  box-shadow: 4px -1px 6px rgba(0,0,0, 0.9),
-              -1px 4px 4px rgba(0,0,0, 0.9);
+  box-shadow: 4px -1px 6px rgba(0, 0, 0, 0.9), -1px 4px 4px rgba(0, 0, 0, 0.9);
 }
 .video_add_form {
   padding: 40px;
@@ -326,8 +325,12 @@ h2, h3, h4 {
   border-collapse: inherit;
   border-spacing: 0 10px;
 }
-#id_title, #id_link, #id_map_belong, #id_type_video, #id_site {
-  color:#ff2350;
+#id_title,
+#id_link,
+#id_map_belong,
+#id_type_video,
+#id_site {
+  color: #ff2350;
   background-color: #faebd7;
   border: 1px solid #000037;
   border-radius: 4px;
@@ -336,39 +339,40 @@ h2, h3, h4 {
 }
 .submit_btn {
   margin-top: 1rem;
-  background-color: #7bc74d;
+  background-color: #ff2350;
   color: #ffffff;
   border: none;
   padding: 6px 16px;
   font-weight: 700;
-  box-shadow: 1px 1px 2px rgba(0,0,0, 0.8);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
   float: right;
   position: relative;
   transition: color 1s, transform 0.2s;
-  text-shadow: 1px 1px 4px #000000; 
+  text-shadow: 1px 1px 4px #000000;
 }
 .submit_btn:hover {
   color: #faebd7;
-  box-shadow: 2px 2px 4px rgba(0,0,0, 0.8);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 .submit_btn:active {
   transform: translateY(2px);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.8);
 }
 
 /*accounts*/
-.csgo-icon {
+.cs-icon {
   height: 2rem;
   display: flex;
   align-self: center;
 }
 .login_btn {
-  border: 1px solid black;
-  box-shadow: inset 0 0 0 0 black;
+  border: 1px solid #000000;
+  box-shadow: inset 0 0 0 0 rgb(0, 0, 0);
   transition: ease-out 0.4s;
 }
 .login_btn:hover {
   color: #f5f5f5;
-  box-shadow: inset 400px 0 0 0 black, 1px 1px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 400px 0 0 0 rgba(0, 0, 0, 1), 1px 1px 2px rgba(0, 0, 0, 0.4);
 }
 .register_btn {
   box-shadow: 0px 18px 10px -10px rgba(0, 0, 0, 0.4);
@@ -378,7 +382,7 @@ h2, h3, h4 {
 .register_btn:hover {
   box-shadow: 0px 38px 20px -20px rgba(0, 0, 0, 0.2);
   -webkit-transform: translate(0px, -10px) scale(1.2);
-          transform: translate(0px, -10px) scale(1.2);
+  transform: translate(0px, -10px) scale(1.2);
 }
 .heading_underline {
   border-bottom: 1px solid #efc88c;
@@ -386,12 +390,12 @@ h2, h3, h4 {
 }
 
 .input-group {
-  position:relative;
-  display:inline-block;
+  position: relative;
+  display: inline-block;
 }
 .input-group-text {
   position: absolute;
-  right:0;
+  right: 0;
   top: 0;
 }
 
@@ -409,7 +413,7 @@ h2, h3, h4 {
   font-size: 0.6rem;
 }
 .footer p span {
-  text-shadow: 1px 1px 2px rgba(0,0,0, 1);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
 }
 .footer img {
   margin: 0.5rem;
@@ -419,7 +423,7 @@ h2, h3, h4 {
 /*responsive*/
 @media only screen and (max-width: 576px) {
   body {
-    background-image: linear-gradient(to bottom right, #1031a8, rgb(92, 92, 207));
+    background-image: linear-gradient(to bottom right, #1031a8, #5c5ccf);
   }
   .hamburger-icon {
     display: flex;
@@ -436,15 +440,17 @@ h2, h3, h4 {
   .hamburger-icon:active {
     background-color: transparent;
   }
-  .icon-1, .icon-2, .icon-3 {
+  .icon-1,
+  .icon-2,
+  .icon-3 {
     position: absolute;
     left: 8%;
     top: 50%;
     width: 32px;
     height: 3px;
     border-radius: 1px;
-    background-color: white;
-    transition: all 400ms cubic-bezier(.84,.06,.52,1.8);
+    background-color: #ffffff;
+    transition: all 400ms cubic-bezier(0.84, 0.06, 0.52, 1.8);
   }
   .icon-1 {
     transform: translateY(-8px);
@@ -508,7 +514,7 @@ h2, h3, h4 {
   }
   .sidebar-outer.slide {
     display: block;
-    animation: slideSide 0.6s cubic-bezier(.58,.06,.2,1.66) 0.2s;
+    animation: slideSide 0.6s cubic-bezier(0.58, 0.06, 0.2, 1.66) 0.2s;
     animation-fill-mode: forwards;
   }
   .sidebar-nav {
@@ -531,7 +537,7 @@ h2, h3, h4 {
   .detail_list {
     margin-left: 1rem;
   }
-  .detail_list  li a {
+  .detail_list li a {
     font-size: 1rem;
   }
   #btn_back {
@@ -561,19 +567,19 @@ h2, h3, h4 {
 }
 
 @media only screen and (max-width: 850px) {
-  .sidebar-nav li a{
+  .sidebar-nav li a {
     font-size: 1rem;
   }
   .video_add_outer {
     padding-left: 0;
   }
-} 
+}
 
 @media only screen and (max-width: 1234px) {
   .img_link p {
     font-size: 1.2rem;
   }
-} 
+}
 
 @keyframes slideIn {
   from {
@@ -594,7 +600,7 @@ h2, h3, h4 {
     width: 0%;
     opacity: 0;
   }
-  
+
   100% {
     width: 70%;
     opacity: 1;
@@ -617,11 +623,11 @@ h2, h3, h4 {
   }
 }
 @keyframes flip {
-  0%,80% {
-    transform: rotateY(360deg) 
+  0%,
+  80% {
+    transform: rotateY(360deg);
   }
 }
-
 
 /* https://codepen.io/AlbertFeynman/pen/BPvzWZ */
 .search_video {
@@ -639,7 +645,7 @@ h2, h3, h4 {
   left: 0;
   width: 60px;
   height: 60px;
-  background: crimson;
+  background: #dc143c;
   border-radius: 50%;
   transition: all 1s;
   z-index: 4;
@@ -658,7 +664,7 @@ h2, h3, h4 {
   left: 16px;
   width: 12px;
   height: 2px;
-  background: white;
+  background: #ffffff;
   transform: rotate(45deg);
   transition: all 0.5s;
 }
@@ -673,7 +679,7 @@ h2, h3, h4 {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 2px solid white;
+  border: 2px solid #ffffff;
   transition: all 0.5s;
 }
 .search_video input {
@@ -688,12 +694,12 @@ h2, h3, h4 {
   height: 50px;
   outline: none;
   border: none;
-  background: crimson;
+  background: #dc143c;
   color: white;
-  text-shadow: 0 0 10px crimson;
+  text-shadow: 0 0 10px #dc143c;
   padding: 0 80px 0 20px;
   border-radius: 30px;
-  box-shadow: 0 0 25px 0 crimson, 0 20px 25px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 25px 0 rgb(219, 20, 60), 0 20px 25px 0 rgba(0, 0, 0, 0.2);
   transition: all 1s;
   opacity: 0;
   z-index: 5;
@@ -724,12 +730,12 @@ h2, h3, h4 {
   width: 25px;
   height: 2px;
   border: none;
-  background: white;
+  background: #ffffff;
   border-radius: 0%;
   transform: rotate(-45deg);
 }
 .search_video input::placeholder {
-  color: white;
+  color: #ffffff;
   opacity: 0.5;
   font-weight: bolder;
 }

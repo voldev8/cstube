@@ -8,3 +8,5 @@ urlpatterns = [
     path('logout/', views.logout, name='logout'),
     path('dashboard/', views.dashboard, name='dashboard'),
 ]
+
+# login can be changed to user_login to avoid overriding built-in names
