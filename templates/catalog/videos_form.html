@@ -1,19 +1,17 @@
 {% extends "base_generic.html" %}
-
-{% block title %} | Add Video {% endblock %}
-
+{% block title %}
+  | Add Video
+{% endblock title %}
 {% block content %}
-
-<div class="video_add_outer">
-  <h2>Add a Video</h2>
-  <form action="" method="post" class="video_add">
-    {% csrf_token %}
-    <table class="video_add_table">
-    {{ form.as_table }}
-    </table>
-    <input type="submit" value="Submit" class="submit_btn">
-  </form>
-  <p>*Videos require admin permission to be shown.</p>
-</div>
-
-{% endblock %}
+  <div class="video_add_outer">
+    <h2>Add a Video</h2>
+    <form action="" method="post" class="video_add">
+      {% csrf_token %}
+      <table class="video_add_table">
+        {{ form.as_table }}
+      </table>
+      <input type="submit" value="Submit" class="submit_btn">
+    </form>
+    <p>*Videos require admin permission to be shown.</p>
+  </div>
+{% endblock content %}

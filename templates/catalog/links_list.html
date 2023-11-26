@@ -1,22 +1,25 @@
 {% extends "base_generic.html" %}
-
 <!-- title -->
-{% block title %} | Maps (csgonades){% endblock %}
-
+{% block title %}
+  | Maps (csgonades)
+{% endblock title %}
 {% block content %}
-
-<h2 class="px-3">Maps (csgonades)</h2>
-<ul class="container-fluid img_link row">
-  {% for map in map_link_list %}
-  <li class="col-md-4 my-2">
-    <div class="inner-map">
-      <a href="/catalog/map_link/{{map.pk}}">
-        <img src="https://cstube.s3.amazonaws.com/de_{{ map }}.jpg" alt="">
-        <p><span id="maps_name">{{ map }}</span> - <span id="maps_number">{{ map.links_set.all.count }}</span></p>
-      </a>
-    </div>
-  </li>
-  {% endfor %}
-</ul>
-
-{% endblock %}
+  <h2 class="px-3">Maps (csgonades)</h2>
+  <ul class="container-fluid img_link row">
+    {% for map in map_link_list %}
+      <li class="col-md-4 my-2">
+        <div class="inner-map">
+          <a href="{% url 'link-detail' pk=map.pk %}">
+            <img height="100%"
+                 width="100%"
+                 src="https://cstube.s3.amazonaws.com/de_{{ map }}.jpg"
+                 alt="">
+            <p>
+              <span id="maps_name">{{ map }}</span> - <span id="maps_number">{{ map.links_set.all.count }}</span>
+            </p>
+          </a>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock content %}

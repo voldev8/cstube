@@ -20,6 +20,9 @@ h4 {
 }
 
 /* Navbar */
+.navbar {
+  background-image: linear-gradient(to bottom right, #000037, #3559bd);
+}
 .hamburger-icon {
   display: none;
 }
@@ -114,7 +117,6 @@ h4 {
 
 /*home*/
 #info_icon {
-  height: 2rem;
   animation: flip 5s infinite;
   box-shadow: 0px 0px 6px rgba(219, 20, 60);
 }
@@ -207,8 +209,8 @@ h4 {
   background-color: #eb4036;
   box-shadow: 3px 3px rgb(239, 199, 138);
 }
-#map_logo {
-  height: 3rem;
+.detail_header h2 {
+  text-decoration: none;
 }
 .detail_list {
   padding: 0;
@@ -226,9 +228,6 @@ h4 {
   text-decoration: none;
   font-size: 1.2rem;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-}
-.type_video_icon {
-  height: 2rem;
 }
 .link_info_end {
   color: #f06449;
@@ -361,7 +360,6 @@ h4 {
 
 /*accounts*/
 .cs-icon {
-  height: 2rem;
   display: flex;
   align-self: center;
 }
@@ -417,7 +415,10 @@ h4 {
 }
 .footer img {
   margin: 0.5rem;
-  height: 1.5rem;
+}
+/*alert*/
+#alert-message {
+  color: #000000;
 }
 
 /*responsive*/
@@ -472,7 +473,6 @@ h4 {
   .clear {
     clear: both;
   }
-
   .navbar .container-fluid {
     padding: 0;
   }

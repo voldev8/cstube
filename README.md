@@ -24,6 +24,60 @@ You can also watch CS livestream on twitch with the most viewers and see top 5.
 1. [Django](https://www.djangoproject.com/) - high-level Python Web framework
 2. [postgreSQL](https://www.postgresql.org/) - Open Source Relational Database
 
+## DB
+
+```plaintext
+accounts_user
++---------------------+--------------+------+-----+---------+----------------+
+| Field               | Type         | Null | Key | Default | Extra          |
++---------------------+--------------+------+-----+---------+----------------+
+| id                  | int          | NO   | PRI | NULL    | auto_increment |
+| username            | varchar(150) | NO   | UNI | NULL    |                |
+| password            | varchar(128) | NO   |     | NULL    |                |
+| email               | varchar(254) | NO   |     | NULL    |                |
+| first_name          | varchar(30)  | NO   |     | NULL    |                |
+| last_name           | varchar(30)  | NO   |     | NULL    |                |
+| date_joined         | datetime(6)  | NO   |     | NULL    |                |
+| favorite_links      | manytomany   | YES  |     | NULL    |                |
+| favorite_videos     | manytomany   | YES  |     | NULL    |                |
++---------------------+--------------+------+-----+---------+----------------+
+
+catalog_maps
++---------------------+--------------+------+-----+---------+----------------+
+| Field               | Type         | Null | Key | Default | Extra          |
++---------------------+--------------+------+-----+---------+----------------+
+| id                  | int          | NO   | PRI | NULL    | auto_increment |
+| name                | varchar(200) | NO   |     | NULL    |                |
++---------------------+--------------+------+-----+---------+----------------+
+
+catalog_videos
++---------------------+--------------+------+-----+---------------------+----------------+
+| Field               | Type         | Null | Key | Default             | Extra          |
++---------------------+--------------+------+-----+---------------------+----------------+
+| id                  | int          | NO   | PRI | NULL                | auto_increment |
+| title               | varchar(40)  | NO   |     | NULL                |                |
+| created_at          | datetime(6)  | NO   |     | NULL                |                |
+| link                | varchar(300) | NO   |     | NULL                |                |
+| map_belong_id       | int          | YES  | MUL | NULL                |                |
+| type_video          | varchar(6)   | YES  |     | NULL                |                |
+| site                | varchar(3)   | YES  |     | a                   |                |
+| admin_permission    | tinyint(1)   | NO   |     | 0                   |                |
++---------------------+--------------+------+-----+---------------------+----------------+
+
+catalog_links
++---------------------+--------------+------+-----+---------------------+----------------+
+| Field               | Type         | Null | Key | Default             | Extra          |
++---------------------+--------------+------+-----+---------------------+----------------+
+| id                  | int          | NO   | PRI | NULL                | auto_increment |
+| title               | varchar(40)  | NO   |     | NULL                |                |
+| created_at          | datetime(6)  | NO   |     | NULL                |                |
+| link                | varchar(300) | NO   |     | NULL                |                |
+| map_belong_id       | int          | YES  | MUL | NULL                |                |
+| type_video          | varchar(6)   | YES  |     | NULL                |                |
+| site                | varchar(3)   | YES  |     | a                   |                |
++---------------------+--------------+------+-----+---------------------+----------------+
+```
+
 ## REQUIRED ENVIRONMENT VARIABLES:
 
 [Twitch Authentication](https://dev.twitch.tv/docs/authentication)

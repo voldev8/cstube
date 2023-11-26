@@ -1,29 +1,26 @@
 {% extends "base_generic.html" %}
-
 <!-- title -->
-{% block title %} | Videos {% endblock %}
-
+{% block title %}
+  | Videos
+{% endblock title %}
 {% block content %}
-
-<form class="search_video m-3" action="{% url 'search_results' %}" method="get">
-  <input name="q" type="text" placeholder="Search...">
-  <div class="search"></div>
-</form>
-
-<h2>Videos</h2>
-<ul class="detail_list text-capitalize">
-
-  {% for video in videos_list|dictsortreversed:"id"%}
-  <li class="d-flex flex-row">
-    <a href="/catalog/videos/{{video.pk}}">
-      {{ video }} - <span class="map_belong_info">{{ video.map_belong }}</span>
-    </a>
-    {% if video in user.favorite_videos.all %}
-    <i class="bi bi-star-fill link_favorited mx-2 align-self-center"></i>
-    {% endif %}
-  </li>
-  {% endfor %}
-
-</ul>
-
-{% endblock %}
+  <form class="search_video m-3"
+        action="{% url 'search_results' %}"
+        method="get">
+    <input name="q" type="text" placeholder="Search...">
+    <div class="search"></div>
+  </form>
+  <h2>Videos</h2>
+  <ul class="detail_list text-capitalize">
+    {% for video in videos_list|dictsortreversed:"id" %}
+      <li class="d-flex flex-row">
+        <a href="{% url 'videos-detail' pk=video.pk %}">
+          {{ video }} - <span class="map_belong_info">{{ video.map_belong }}</span>
+        </a>
+        {% if video in user.favorite_videos.all %}
+          <i class="bi bi-star-fill link_favorited mx-2 align-self-center"></i>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock content %}

@@ -1,23 +1,26 @@
 {% extends "base_generic.html" %}
-
 <!-- title -->
-{% block title %} | Maps {% endblock %}
-
+{% block title %}
+  | Maps
+{% endblock title %}
 {% block content %}
-{% load custom_tags %}
-
-<h2 class="px-3">Maps</h2>
-<ul class="container-fluid img_link row">
-  {% for map in maps_list %}
-  <li class="col-md-4 my-2">
-    <div class="inner-map">
-      <a href="/catalog/map/{{map.pk}}">
-        <img src="https://cstube.s3.amazonaws.com/de_{{ map }}.jpg" alt="">
-        <p><span id="maps_name">{{ map }}</span> - <span id="maps_number">{{ map.videos_set.all | map_filter}}</span></p>
-      </a>
-    </div>
-  </li>
-  {% endfor %}
-</ul>
-
-{% endblock %}
+  {% load custom_tags %}
+  <h2 class="px-3">Maps</h2>
+  <ul class="container-fluid img_link row">
+    {% for map in maps_list %}
+      <li class="col-md-4 my-2">
+        <div class="inner-map">
+          <a href="{% url 'map-detail' pk=map.pk %}">
+            <img height="100%"
+                 width="100%"
+                 src="https://cstube.s3.amazonaws.com/de_{{ map }}.jpg"
+                 alt="">
+            <p>
+              <span id="maps_name">{{ map }}</span> - <span id="maps_number">{{ map.videos_set.all | map_filter }}</span>
+            </p>
+          </a>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock content %}

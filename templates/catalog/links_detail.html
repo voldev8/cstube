@@ -1,45 +1,39 @@
 {% extends "base_generic.html" %}
-
-{% block title %} | {{ map_link_list_detail }} {% endblock %}
-
+{% block title %}
+  | {{ map_link_list_detail }}
+{% endblock title %}
 {% block content %}
-{% load custom_tags %}
-
-<div class="d-flex flex-row justify-content-start m-2">
-  <h2 class="align-self-center">Map: {{ map_link_list_detail }}</h2>
-  <img 
-    id="map_logo"  
-    class="mx-2 align-self-center" 
-    src="https://cstube.s3.amazonaws.com/icon_de_{{ map_link_list_detail }}.png" 
-    alt="logo of {{ map_link_list_detail }}"
-  />
-</div>
-
-{% regroup map_link_list_detail.links_set.all|dictsortreversed:"type_video" by type_video as grouped_by_category %}
-
-{% for category in grouped_by_category %}
-<div class="heading_underline d-flex flex-row justify-content-start m-2">
-  <h4>{{ category.grouper }}</h4>
-  <img 
-    class="type_video_icon align-self-center rounded-circle" 
-    src="https://cstube.s3.amazonaws.com/{{ category.grouper }}.png" 
-    alt="{{ category.grouper }}"
-  />
-</div>
-
-<ul class="detail_list text-capitalize mb-3">
-  {% for link in category.list|dictsort:"site" %}
-  <li>
-    <a href="{{ link.link }}" target="_blank">
-      {{ link.title | replace_with_space }} - <span class="link_info_end">{{link.site}}</span>
-    </a>
-  </li>
+  {% load custom_tags %}
+  <div class="d-flex flex-row justify-content-start m-2">
+    <h2 class="align-self-center">Map: {{ map_link_list_detail }}</h2>
+    <img id="map_logo"
+         class="mx-2 align-self-center"
+         height="48"
+         width="auto"
+         src="https://cstube.s3.amazonaws.com/icon_de_{{ map_link_list_detail }}.png"
+         alt="logo of {{ map_link_list_detail }}" />
+  </div>
+  {% regroup map_link_list_detail.links_set.all|dictsortreversed:"type_video" by type_video as grouped_by_category %}
+  {% for category in grouped_by_category %}
+    <div class="heading_underline d-flex flex-row justify-content-start m-2">
+      <h4>{{ category.grouper }}</h4>
+      <img class="type_video_icon align-self-center rounded-circle"
+           height="32"
+           width="auto"
+           src="https://cstube.s3.amazonaws.com/{{ category.grouper }}.png"
+           alt="{{ category.grouper }}" />
+    </div>
+    <ul class="detail_list text-capitalize mb-3">
+      {% for link in category.list|dictsort:"site" %}
+        <li>
+          <a href="{{ link.link }}" target="_blank">
+            {{ link.title | replace_with_space }} - <span class="link_info_end">{{ link.site }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
   {% endfor %}
-</ul>
-{% endfor %}
-
-<!-- <ul class="detail_list text-capitalize">
-
+  <!-- <ul class="detail_list text-capitalize">
   <h4>Smoke</h4>
   {% for link in map_link_list_detail.links_set.all|dictsort:"site" %}
     {% if link.type_video == 'Smoke' %}
@@ -69,5 +63,4 @@
   {% endfor %}
 
 </ul> -->
-
-{% endblock %}
+{% endblock content %}

@@ -1,6 +1,6 @@
 from pathlib import Path
 import os
-import dj_database_url
+# import dj_database_url
 # import django_heroku
 import environ
 
@@ -21,21 +21,13 @@ env = environ.Env()
 # reading .env file  # reading .env file
 environ.Env.read_env(env_file=base('.env'))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 DEBUG = env.bool('DJANGO_DEBUG', default=False)
 
 ALLOWED_HOSTS = ['cstube.herokuapp.com', '127.0.0.1']
-# RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')if RENDER_EXTERNAL_HOSTNAME:    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
-
-
 
 # Application definition
 
@@ -83,7 +75,6 @@ WSGI_APPLICATION = 'cstube.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
     # 'default': {
@@ -109,7 +100,6 @@ DATABASES = {
 
 
 # Password validation
-# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -142,9 +132,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 # The absolute path to the directory where collectstatic will collect static files for deployment.
 # . os.path.join(BASE_DIR, 'staticfiles')

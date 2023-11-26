@@ -1,55 +1,48 @@
 {% extends "base_generic.html" %}
-
 <!-- title -->
-{% block title %} | {{ videos.title }} {% endblock %}
-
+{% block title %}
+  | {{ videos.title }}
+{% endblock title %}
 {% block content %}
-
-<div class="video_player_outer">
-  <div class="video_detail_header d-flex align-items-center">
-    <h2>Video: {{ videos.title }}</h2>
-    
-    {% if user.is_authenticated %}
-      {%if videos in user.favorite_videos.all%}
-      <form id="favorite_videos{{videos.id}}" method="POST" action="{% url 'remove-favorite-video' videos.id %}">
-        {% csrf_token %}
-          <button 
-            class="btn btn-danger rounded-circle fs-3 mx-4 shadow" 
-            type="submit" 
-            data-bs-toggle="tooltip" 
-            title="Remove video from favorites"
-          >
-            <i class="bi bi-folder-minus"></i>
-          </button>
-        </div>
-      </form>
-      {% else %}
-      <form id="favorite_videos{{videos.id}}" method="POST" action="{% url 'add-favorite-video' videos.id %}">
-        {% csrf_token %}
-        <button 
-          class="btn btn-danger rounded-circle fs-3 mx-4 shadow" 
-          type="submit" 
-          data-bs-toggle="tooltip" 
-          title="Add video to favorites"
-        >
-          <i class="bi bi-folder-plus"></i>
-        </button>
-      </form>
+  <div class="video_player_outer">
+    <div class="video_detail_header d-flex align-items-center">
+      <h2>Video: {{ videos.title }}</h2>
+      {% if user.is_authenticated %}
+        {% if videos in user.favorite_videos.all %}
+          <form id="favorite_videos{{ videos.id }}"
+                method="post"
+                action="{% url 'remove-favorite-video' videos.id %}">
+            {% csrf_token %}
+            <button class="btn btn-danger rounded-circle fs-3 mx-4 shadow"
+                    type="submit"
+                    data-bs-toggle="tooltip"
+                    title="Remove video from favorites">
+              <i class="bi bi-folder-minus"></i>
+            </button>
+          </form>
+        {% else %}
+          <form id="favorite_videos{{ videos.id }}"
+                method="post"
+                action="{% url 'add-favorite-video' videos.id %}">
+            {% csrf_token %}
+            <button class="btn btn-danger rounded-circle fs-3 mx-4 shadow"
+                    type="submit"
+                    data-bs-toggle="tooltip"
+                    title="Add video to favorites">
+              <i class="bi bi-folder-plus"></i>
+            </button>
+          </form>
+        {% endif %}
       {% endif %}
-    {% endif %}
+    </div>
+    <div class="youtube_player video_player">
+      <iframe width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/{{ videos.youtube_id }}"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+      </iframe>
+    </div>
   </div>
-
-  <div class="youtube_player video_player">
-    <iframe  
-      width="100%" 
-      height="100%" 
-      src="https://www.youtube.com/embed/{{ videos.youtube_id }}" 
-      frameborder="0" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-      allowfullscreen
-      >
-    </iframe>
-  </div>
-</div>
-
-{% endblock %}
+{% endblock content %}
